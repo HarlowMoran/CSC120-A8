@@ -23,10 +23,14 @@ public class Cafe extends Building{
      * @param nCreams
      */
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
+        if(nCoffeeOunces >= size && nSugarPackets >= nSugarPackets && nCreams >= nCreams && nCups >= 1){
         nCoffeeOunces -= size;
         nSugarPackets -= nSugarPackets;
         nCreams -= nCreams;
         nCups -= 1;
+        }else{
+            System.out.println("Not enough inventory. Please restock.");
+        }
     }
 
     /**

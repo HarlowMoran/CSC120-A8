@@ -5,13 +5,15 @@ import java.util.ArrayList;
 public class House extends Building{
 
 //**Attributes */
-private ArrayList<Student> residents;
-private boolean hasDiningRoom;
+public ArrayList<Student> residents;
+public boolean hasDiningRoom;
+public int nResidents;
 
-  public House(String name, String address, int nFloors, boolean hasDiningRoom, ArrayList<Student>residents){
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, ArrayList<Student>residents, int nResidents){
     super(name, address, nFloors);
     this.hasDiningRoom = hasDiningRoom;
     this.residents = new ArrayList<Student>(residents);
+    this.nResidents = nResidents;
     
     System.out.println("You have built a house: 🏠");
   }
@@ -27,7 +29,6 @@ private boolean hasDiningRoom;
    * @return nResidents
    */
   public int nResidents(){
-    int nResidents = residents.size();
     return nResidents;
   }
   /**
@@ -49,10 +50,10 @@ private boolean hasDiningRoom;
    */
   private void moveIn(Student s) {
     if(isResident(s) == true){
-        System.out.println(s + " already lives in this house.");
-    } 
-    else {
-        residents.add(s);
+      System.out.println(s + " already lives in this house.");
+    }else{
+      residents.add(s);
+      nResidents += 1;
     }
   }
 
@@ -64,6 +65,7 @@ private boolean hasDiningRoom;
   public Student moveOut(Student s) {
     if(isResident(s) == true){
         residents.remove(s);
+        nResidents -= 1;
         return s;
     }
     else {

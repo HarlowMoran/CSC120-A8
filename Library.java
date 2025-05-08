@@ -9,7 +9,7 @@ public class Library extends Building{
 
     public Library(String name, String address, int nFloors, Hashtable<String, Boolean>collection) {
       super(name, address, nFloors);
-      this.collection = new Hashtable<String, Boolean>(collection);
+      this.collection = new Hashtable<String, Boolean>();
       System.out.println("You have built a library: 📖");
     }
 
@@ -67,12 +67,8 @@ public class Library extends Building{
      * @return true | false
      */
     public boolean isAvailable(String title){
-      if(collection.contains(true)){
-        return true;
-      }
-      else{
-        return false;
-      }
+      Boolean available = collection.get(title);
+      return available != null && available;
     }
 
     /**
@@ -82,8 +78,9 @@ public class Library extends Building{
       System.out.println(collection.toString());
     }
   
-//    public static void main(String[] args) {
-//      new Library();
-//    }
+   // public static void main(String[] args) {
+   //   Library myLibrary = new Library("lol", "602", 3, new Hashtable<String, Boolean>());
+   //   System.out.println(myLibrary.isAvailable("test"));
+   //  }
   
   }
